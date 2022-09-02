@@ -14,12 +14,17 @@ def pytest_addoption(parser):
     parser.addoption(
         "--drivers", default=os.path.expanduser("~/Documents/otus/drivers")
     )
+    parser.addoption(
+        "--base_url", default="http://192.168.8.103:8081/"
+    )
+
 
 @pytest.fixture()
 def driver(request):
     browser_name = request.config.getoption("--browser")
     headless = request.config.getoption("--headless")
     drivers_source = request.config.getoption("--drivers")
+    base_url = request.config.getoption("--base_url")
 
     if browser_name == "chrome":
         options = webdriver.ChromeOptions()
@@ -36,6 +41,7 @@ def driver(request):
     else:
         raise ValueError(f"Browser {browser_name} is not support")
 
+    _driver.base_url = base_url
     yield _driver
 
     _driver.close()
