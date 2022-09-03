@@ -5,5 +5,6 @@ def test_hello_selenium(driver):
 
 def test_hello_selenium2(driver):
     driver.get(url=driver.base_url)
-    #driver.save_screenshot("test.png")
+    # driver.save_screenshot("test.png")
     assert driver.title == "YourStore"
+
