@@ -20,7 +20,6 @@ def browser(request):
     drivers = request.config.getoption("--drivers")
 
     if browser == "chrome":
-        # В selenium 4 рекомендуют использование такого подхода
         service = ChromiumService(executable_path=drivers + "/chromedriver")
         driver = webdriver.Chrome(service=service)
     elif browser == "firefox":
@@ -28,8 +27,6 @@ def browser(request):
         driver = webdriver.Firefox(service=service)
     else:
         driver = webdriver.Safari()
-
-    driver.maximize_window()
 
     request.addfinalizer(driver.close)
 
