@@ -46,14 +46,3 @@ class PageRegistration:
     PASSWORD = (By.XPATH, "//*[text()='Password']")
     PASSWORD_CONFIRM = (By.XPATH, "//label[text()='Password Confirm']")
     SUBSCRIBE = (By.XPATH, "//label[text()='Subscribe']")
-
-
-
-
-
-
-
-
-    
-
-
